@@ -1,0 +1,211 @@
+/* Reset */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #fff;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+/* Slideshow */
+
+.slideshow-container {
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    animation: fade 1s ease-in-out;
+}
+
+input[name="slide"] {
+    display: none;
+}
+
+input[name="slide"]:checked+.slide {
+    display: block;
+}
+
+.slide img,
+.slide video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.slide h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.slide p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+
+/* Gallery */
+
+.horizontal-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px;
+}
+
+.gallery-item {
+    background: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    flex: 1 1 220px;
+    max-width: 220px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.caption {
+    padding: 8px 4px;
+    font-size: 1rem;
+    color: #333;
+    background: #fff;
+}
+
+
+/* Resources */
+
+.resources {
+    list-style: none;
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.resources li {
+    margin: 0.5rem 0;
+}
+
+.resources a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.resources a:hover {
+    text-decoration: underline;
+}
+
+
+/* Navigation */
+
+.nav {
+    margin-top: 1.5rem;
+    text-align: center;
+    padding: 0.75rem;
+    background: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav label {
+    padding: 0.75rem 1.5rem;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #4a90e2, #50c4b7);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: inline-block;
+}
+
+.nav label:hover {
+    background: linear-gradient(135deg, #357abd, #3aa89b);
+}
+
+input#slide1:checked~.nav label:nth-child(1),
+input#slide2:checked~.nav label:nth-child(2),
+input#slide3:checked~.nav label:nth-child(3),
+input#slide4:checked~.nav label:nth-child(4),
+input#slide5:checked~.nav label:nth-child(5),
+input#slide6:checked~.nav label:nth-child(6),
+input#slide7:checked~.nav label:nth-child(7),
+input#slide8:checked~.nav label:nth-child(8) {
+    background: #333;
+}
+
+
+/* Fade Animation */
+
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Responsive Adjustments */
+
+@media (max-width: 800px) {
+    .gallery-item {
+        flex-basis: 45%;
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 500px) {
+    .gallery-item {
+        flex-basis: 98%;
+        max-width: 98%;
+    }
+    .horizontal-gallery {
+        gap: 8px;
+    }
+    .slideshow-container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 600px) {
+    .slide h1 {
+        font-size: 1.8rem;
+    }
+    .slide p {
+        font-size: 1rem;
+    }
+    .nav label {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
